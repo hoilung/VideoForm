@@ -78,6 +78,8 @@ namespace VideoForm
                         var copyData = (COPYDATASTRUCT)m.GetLParam(typeof(COPYDATASTRUCT));
                         if (!string.IsNullOrEmpty(copyData.lpData))
                         {
+                            if (this.VideoSetString == copyData.lpData)
+                                return;
                             this.VideoSetString = copyData.lpData;
                             if (hkHandler != null)
                             {
