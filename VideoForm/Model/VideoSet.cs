@@ -47,7 +47,7 @@ namespace VideoForm.Model
                     videoSet.port = int.Parse(kv[1]);
                     videoSet.username = array[1];
                     videoSet.password = array[2];
-                    videoSet.category = array[3];
+                    videoSet.category = (categoryEnum)Enum.Parse(typeof(categoryEnum), array[3]);
                     return videoSet;
                 }
                 catch (Exception ex)
