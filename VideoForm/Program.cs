@@ -31,7 +31,8 @@ namespace VideoForm
             }
 
             var main = new Form1();
-            //main.VideoSetString = "192.168.1.199:8000|admin|xxct111111";
+            //main.VideoSetString = "192.168.1.199:8000|admin|xxct111111|hikvision";
+            //main.VideoSetString = "192.168.1.199:8000|admin|xxct111111|uniview";
             if (args.Length > 0)
             {
                 main.VideoSetString = args[0];

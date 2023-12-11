@@ -17,10 +17,13 @@ namespace VideoForm
     public partial class Form1 : Form
     {
         public HKHandler hkHandler = null;
+        public UniViewHandler uniViewHandler = null;
         public Form1()
         {
             InitializeComponent();
-            hkHandler = new HKHandler();
+            hkHandler = new HKHandler();//海康
+            uniViewHandler = new UniViewHandler();//宇视
+
             this.Shown += Form1_Shown;
             this.FormClosed += Form1_FormClosed;
 
@@ -43,6 +46,9 @@ namespace VideoForm
         {
             hkHandler.LogOut();
             hkHandler.Dispose();
+
+            uniViewHandler.LogOut();
+            uniViewHandler.Dispose();
         }
 
         public string VideoSetString { get; set; } = string.Empty;
@@ -62,9 +68,22 @@ namespace VideoForm
             var set = Model.VideoSet.Parse(this.VideoSetString);
             if (set == null) return;
 
-            hkHandler.Login(set.ip, set.port, set.username, set.password);
+            hkHandler.LogOut();
+            uniViewHandler.LogOut();
 
-            hkHandler.Preview(this.pictureBox1);
+            switch (set.category)
+            {
+                case Model.categoryEnum.hikvision:
+                    hkHandler.Login(set.ip, set.port, set.username, set.password);
+                    hkHandler.Preview(this.pictureBox1);
+                    break;
+                case Model.categoryEnum.uniview:
+                    uniViewHandler.Login(set.ip, set.port, set.username, set.password);
+                    uniViewHandler.StartRealPlay(this.pictureBox1);
+                    break;
+                default:
+                    break;
+            }
         }
 
 
@@ -80,11 +99,7 @@ namespace VideoForm
                         {
                             if (this.VideoSetString == copyData.lpData)
                                 return;
-                            this.VideoSetString = copyData.lpData;
-                            if (hkHandler != null)
-                            {
-                                hkHandler.LogOut();
-                            }
+                            this.VideoSetString = copyData.lpData;                           
                             ShowVideo();
                         }
                     }

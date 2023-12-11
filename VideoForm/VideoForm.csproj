@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CHCNetSDK.cs" />
+    <Compile Include="Common\NETDEMO.cs" />
+    <Compile Include="Common\NETSDKHelper.cs" />
     <Compile Include="Common\ObjectExt.cs" />
     <Compile Include="Common\WINDOWSMSG.cs" />
     <Compile Include="Form1.cs">
@@ -76,6 +78,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\HKHandler.cs" />
+    <Compile Include="Handler\UniViewHandler.cs" />
     <Compile Include="Model\VideoSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
