@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.IO.Compression;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Windows.Forms;
 using VideoForm.Common;
 
@@ -12,8 +16,27 @@ namespace VideoForm
         [STAThread]
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            if (File.Exists("hk_dll.zip") == false)
+            {
+                ExtractNormalFileInResx(Properties.Resources.hk_dll, "./hk_dll.zip");
+                Thread.Sleep(500);
+            }
+            if (File.Exists("uniview_dll.zip") == false)
+            {
+                ExtractNormalFileInResx(Properties.Resources.uniview_dll, "./uniview_dll.zip");
+                Thread.Sleep(500);
+            }
+            if (!File.Exists("./HCNetSDK.dll"))
+            {
+                ZipFile.ExtractToDirectory("./hk_dll.zip", "./");
+                Thread.Sleep(500);
+            }
+            if (!File.Exists("./NetDEVSDK.dll"))
+            {
+                ZipFile.ExtractToDirectory("./uniview_dll.zip", "./");
+                Thread.Sleep(500);
+            }
+
 
             //只有一个参数的时候，替换显示图像
             if (args.Length == 1)
@@ -30,6 +53,8 @@ namespace VideoForm
 
             }
 
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
             var main = new Form1();
             //main.VideoSetString = "192.168.1.199:8000|admin|xxct111111|hikvision";
             //main.VideoSetString = "192.168.1.199:80|admin|xxct111111|uniview";
@@ -39,5 +64,15 @@ namespace VideoForm
             }
             Application.Run(main);
         }
+
+        static void ExtractNormalFileInResx(byte[] resource, String path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            file.Write(resource, 0, resource.Length);
+            file.Flush();
+            file.Close();
+        }
+
+
     }
 }
