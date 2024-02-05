@@ -1,11 +1,6 @@
 ﻿using NETSDKHelper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace VideoForm.Handler
 {
@@ -19,8 +14,14 @@ namespace VideoForm.Handler
             int iRet = NETDEVSDK.NETDEV_Init();
             if (NETDEVSDK.TRUE != iRet)
             {
-                MessageBox.Show("it is not a admin oper");
+                this.OnMsg("it is not a admin oper");
             }
+        }
+        public event Action<string> Msg;
+
+        public virtual void OnMsg(string msg)
+        {
+            this.Msg?.Invoke(msg);
         }
 
         public void Dispose()
@@ -45,7 +46,7 @@ namespace VideoForm.Handler
             if (NETDEMO.NETDEMO_DEVICE_TYPE_E.NETDEMO_DEVICE_VMS == m_eDeviceType)
             {
                 pstDevLoginInfo.dwLoginProto = (int)NETDEV_LOGIN_PROTO_E.NETDEV_LOGIN_PROTO_PRIVATE;
-                MessageBox.Show("暂时不支持 vms");
+                this.OnMsg("暂时不支持 vms");
                 return;
             }
             else
@@ -55,7 +56,7 @@ namespace VideoForm.Handler
             m_lpDevHandle = NETDEVSDK.NETDEV_Login_V30(ref pstDevLoginInfo, ref pstSELogInfo);
             if (m_lpDevHandle == IntPtr.Zero)
             {
-                MessageBox.Show(m_ip + " : " + m_port, "login " + NETDEVSDK.NETDEV_GetLastError());
+                this.OnMsg(m_ip + " : " + m_port + " login " + NETDEVSDK.NETDEV_GetLastError());
             }
             //获取视频通道
             //int pdwChlCount = 256;
@@ -85,10 +86,10 @@ namespace VideoForm.Handler
 
         #region 预览 停止预览
 
-        public void StartRealPlay(PictureBox RealPlayWnd)
+        public void StartRealPlay(System.Windows.Forms.PictureBox RealPlayWnd)
         {
             NETDEV_PREVIEWINFO_S stPreviewInfo = new NETDEV_PREVIEWINFO_S();
-            RealPlayWnd.Invoke(new MethodInvoker(() =>
+            RealPlayWnd.Invoke(new System.Windows.Forms.MethodInvoker(() =>
             {
                 stPreviewInfo.hPlayWnd = RealPlayWnd.Handle;
             }));

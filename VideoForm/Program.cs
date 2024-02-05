@@ -56,7 +56,7 @@ namespace VideoForm
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var main = new Form1();
+            var main = new Main();
             //main.VideoSetString = "192.168.1.199:8000|admin|xxct111111|hikvision";
             //main.VideoSetString = "192.168.1.199:80|admin|xxct111111|uniview";
             if (args.Length > 0)

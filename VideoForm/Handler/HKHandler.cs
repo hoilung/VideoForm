@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
 using VideoForm.Common;
 
 namespace VideoForm.Handler
@@ -16,9 +15,15 @@ namespace VideoForm.Handler
             bool m_bInitSDK = CHCNetSDK.NET_DVR_Init();
             if (!m_bInitSDK)
             {
-                MessageBox.Show("NET_DVR_Init error!");
+                this.OnMsg("NET_DVR_Init error!");
                 //throw new AccessViolationException("初始化海康设备错误");
             }
+        }
+
+        public event Action<string> Msg;
+
+        public virtual void OnMsg(string msg) {
+            Msg?.Invoke(msg);
         }
 
 
@@ -50,7 +55,7 @@ namespace VideoForm.Handler
                     iLastErr = CHCNetSDK.NET_DVR_GetLastError();
                     str = "NET_DVR_Login_V30 failed, error code= " + iLastErr; //登录失败，输出错误号 Failed to login and output the error code
                                                                                //Log.Error(strErr);
-                    MessageBox.Show(str);
+                    this.OnMsg(str);
                 }
                 //登录成功
                 //userID
@@ -74,7 +79,7 @@ namespace VideoForm.Handler
                 uint iErrCode = CHCNetSDK.NET_DVR_GetLastError();
                 strLoginCallBack = strLoginCallBack + "，错误号:" + iErrCode;
                 //Log.Error(strLoginCallBack);
-                MessageBox.Show(strLoginCallBack);
+                this.OnMsg(strLoginCallBack);
             }
         }
         #endregion
@@ -89,7 +94,7 @@ namespace VideoForm.Handler
                 {
                     iLastErr = CHCNetSDK.NET_DVR_GetLastError();
                     str = "NET_DVR_Logout failed, error code= " + iLastErr;
-                    MessageBox.Show(str);
+                    this.OnMsg(str);
                     return;
                 }
                 m_lUserID = -1;
@@ -98,17 +103,17 @@ namespace VideoForm.Handler
 
         #region 预览，停止预览
 
-        public void Preview(PictureBox RealPlayWnd)
+        public void Preview(System.Windows.Forms.PictureBox RealPlayWnd)
         {
             if (m_lUserID < 0)
             {
-                MessageBox.Show("Please login the device firstly");
+                this.OnMsg("Please login the device firstly");
                 return;
             }
             if (m_lRealHandle < 0)
             {
                 CHCNetSDK.NET_DVR_PREVIEWINFO lpPreviewInfo = new CHCNetSDK.NET_DVR_PREVIEWINFO();
-                RealPlayWnd.Invoke(new MethodInvoker(() =>
+                RealPlayWnd.Invoke(new System.Windows.Forms.MethodInvoker(() =>
                 {
                     lpPreviewInfo.hPlayWnd = RealPlayWnd.Handle;//预览窗口
                 }));
@@ -128,7 +133,7 @@ namespace VideoForm.Handler
                 {
                     iLastErr = CHCNetSDK.NET_DVR_GetLastError();
                     str = "NET_DVR_RealPlay_V40 failed, error code= " + iLastErr; //预览失败，输出错误号
-                    MessageBox.Show(str);
+                    this.OnMsg(str);
                     return;
                 }
                 else
@@ -153,7 +158,7 @@ namespace VideoForm.Handler
                 {
                     iLastErr = CHCNetSDK.NET_DVR_GetLastError();
                     str = "NET_DVR_StopRealPlay failed, error code= " + iLastErr;
-                    MessageBox.Show(str);
+                    this.OnMsg(str);
                     return;
                 }
                 m_lRealHandle = -1;

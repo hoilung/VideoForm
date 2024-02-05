@@ -14,15 +14,19 @@ using VideoForm.Handler;
 
 namespace VideoForm
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         public HKHandler hkHandler = null;
         public UniViewHandler uniViewHandler = null;
-        public Form1()
+        public Main()
         {
             InitializeComponent();
             hkHandler = new HKHandler();//海康
+            hkHandler.Msg += Handler_Msg;
+
+
             uniViewHandler = new UniViewHandler();//宇视
+            uniViewHandler.Msg += Handler_Msg;
 
             this.Shown += Form1_Shown;
             this.FormClosed += Form1_FormClosed;
@@ -31,6 +35,22 @@ namespace VideoForm
 
             //File.WriteAllText("h.txt", this.Handle.ToString());
 
+        }
+
+
+        private void Handler_Msg(string obj)
+        {
+            try
+            {
+                this.Invoke(new MethodInvoker(() =>
+                {
+                    toolStripStatusLabel1.Text = obj;
+                }));
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
 
@@ -70,18 +90,21 @@ namespace VideoForm
 
             hkHandler.LogOut();
             uniViewHandler.LogOut();
-
+            this.Handler_Msg($"准备登录：{set.ip}");
             switch (set.category)
             {
-                case Model.categoryEnum.hikvision:
-                    hkHandler.Login(set.ip, set.port, set.username, set.password);
+                case Model.categoryEnum.hikvision:                    
+                    hkHandler.Login(set.ip, set.port, set.username, set.password);                    
                     hkHandler.Preview(this.pictureBox1);
+                    this.Handler_Msg($"开始预览：{set.ip}");
                     break;
                 case Model.categoryEnum.uniview:
                     uniViewHandler.Login(set.ip, set.port, set.username, set.password);
                     uniViewHandler.StartRealPlay(this.pictureBox1);
+                    this.Handler_Msg($"开始预览：{set.ip}");
                     break;
                 default:
+                    this.Handler_Msg($"不支持的设备类型");
                     break;
             }
         }
@@ -99,13 +122,13 @@ namespace VideoForm
                         {
                             if (this.VideoSetString == copyData.lpData)
                                 return;
-                            this.VideoSetString = copyData.lpData;                           
+                            this.VideoSetString = copyData.lpData;
                             ShowVideo();
                         }
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        this.Handler_Msg(ex.Message);
                     }
                     break;
                 default:
