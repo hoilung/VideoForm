@@ -94,14 +94,14 @@ namespace VideoForm
             switch (set.category)
             {
                 case Model.categoryEnum.hikvision:                    
-                    hkHandler.Login(set.ip, set.port, set.username, set.password);                    
-                    hkHandler.Preview(this.pictureBox1);
+                    hkHandler.Login(set.ip, set.port, set.username, set.password);
                     this.Handler_Msg($"开始预览：{set.ip}");
+                    hkHandler.Preview(this.pictureBox1);                    
                     break;
                 case Model.categoryEnum.uniview:
                     uniViewHandler.Login(set.ip, set.port, set.username, set.password);
-                    uniViewHandler.StartRealPlay(this.pictureBox1);
                     this.Handler_Msg($"开始预览：{set.ip}");
+                    uniViewHandler.StartRealPlay(this.pictureBox1);                    
                     break;
                 default:
                     this.Handler_Msg($"不支持的设备类型");

@@ -99,6 +99,7 @@ namespace VideoForm.Handler
             m_lpRealPlay = NETDEVSDK.NETDEV_RealPlay(m_lpDevHandle, ref stPreviewInfo, IntPtr.Zero, IntPtr.Zero);
             if (m_lpRealPlay == IntPtr.Zero)
             {
+                this.OnMsg("RealPlay " + NETDEVSDK.NETDEV_GetLastError());
                 return;
             }
         }
