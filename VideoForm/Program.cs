@@ -16,25 +16,30 @@ namespace VideoForm
         [STAThread]
         static void Main(string[] args)
         {
-            var currdir=Application.StartupPath;
-            if (File.Exists(currdir+"/hk_dll.zip") == false)
+            var currdir = Application.StartupPath;
+            string _runtimes = Path.Combine(currdir, "runtimes");
+            if (File.Exists(currdir + "\\hk_dll.zip") == false)
             {
-                ExtractNormalFileInResx(Properties.Resources.hk_dll, currdir+"/hk_dll.zip");
+                ExtractNormalFileInResx(Properties.Resources.hk_dll, currdir + "\\hk_dll.zip");
                 Thread.Sleep(500);
             }
-            if (File.Exists(currdir + "/uniview_dll.zip") == false)
+            if (File.Exists(currdir + "\\uniview_dll.zip") == false)
             {
-                ExtractNormalFileInResx(Properties.Resources.uniview_dll, currdir+"/uniview_dll.zip");
+                ExtractNormalFileInResx(Properties.Resources.uniview_dll, currdir + "\\uniview_dll.zip");
                 Thread.Sleep(500);
             }
-            if (!File.Exists(currdir+"/HCNetSDK.dll"))
+            if (Directory.Exists(_runtimes) == false)
             {
-                ZipFile.ExtractToDirectory(currdir + "./hk_dll.zip", currdir + "/");
+                Directory.CreateDirectory(_runtimes);
+            }
+            if (!File.Exists(_runtimes + "\\HCNetSDK.dll"))
+            {
+                ZipFile.ExtractToDirectory(currdir + "\\hk_dll.zip", _runtimes);
                 Thread.Sleep(500);
             }
-            if (!File.Exists(currdir + "/NetDEVSDK.dll"))
+            if (!File.Exists(_runtimes + "\\NetDEVSDK.dll"))
             {
-                ZipFile.ExtractToDirectory(currdir + "/uniview_dll.zip", currdir + "/");
+                ZipFile.ExtractToDirectory(currdir + "\\uniview_dll.zip", _runtimes);
                 Thread.Sleep(500);
             }
 

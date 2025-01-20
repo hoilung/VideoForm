@@ -7685,14 +7685,15 @@ namespace NETSDKHelper //宇视
         /* error code end */
 
         /*interface function start */
+        private const string dllPath = ".\\runtimes\\NetDEVSDK.dll";
 
-        [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
+        [DllImport(".\\runtimes\\msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
         public static extern void MemCopy(byte[] dest, IntPtr src, int count);//字节数组到字节数组的拷贝
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_FaceSnapshotCallBack_PF(IntPtr lpHandle, ref NETDEV_TMS_FACE_SNAPSHOT_PIC_INFO_S pstFaceSnapShotData, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetFaceSnapshotCallBack(IntPtr lpUserID, NETDEV_FaceSnapshotCallBack_PF cbFaceSnapshotCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
@@ -7701,215 +7702,215 @@ namespace NETSDKHelper //宇视
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_AlarmMessCallBack_PF_V30(IntPtr lpUserID, ref NETDEV_REPORT_INFO_S pstReportInfo, IntPtr lpBuf, Int32 dwBufLen, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetAlarmCallBack(IntPtr lpUserID, NETDEV_AlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetAlarmCallBack_V30(IntPtr lpUserID, NETDEV_AlarmMessCallBack_PF_V30 cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_ExceptionCallBack_PF(IntPtr lpUserID, Int32 dwType, IntPtr lpExpHandle, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetExceptionCallBack(NETDEV_ExceptionCallBack_PF cbExceptionCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_DISCOVERY_CALLBACK_PF(IntPtr pstDevInfo, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDiscoveryCallBack(NETDEV_DISCOVERY_CALLBACK_PF cbDiscoveryCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_PassengerFlowStatisticCallBack_PF(IntPtr lpUserID, IntPtr pstPassengerFlowData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPassengerFlowStatisticCallBack(IntPtr lpUserID, NETDEV_PassengerFlowStatisticCallBack_PF cbPassengerFlowStatisticCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_PersonAlarmMessCallBack_PF(IntPtr lpUserID, ref NETDEV_PERSON_EVENT_INFO_S pstAlarmData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPersonAlarmCallBack(IntPtr lpUserID, NETDEV_PersonAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_VehicleAlarmMessCallBack_PF(IntPtr lpUserID, ref NETDEV_VEH_RECOGNITION_EVENT_S pstVehicleAlarmInfo, IntPtr lpBuf, Int32 dwBufLen, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetVehicleAlarmCallBack(IntPtr lpUserID, NETDEV_VehicleAlarmMessCallBack_PF cbVehicleAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_StructAlarmMessCallBack_PF(IntPtr lpUserID, ref NETDEV_STRUCT_ALARM_INFO_S pstAlarmInfo, ref NETDEV_STRUCT_DATA_INFO_S pstAlarmData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetStructAlarmCallBack(IntPtr lpUserID, NETDEV_StructAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_AlarmMessFGCallBack_PF(IntPtr lpUserID, ref NETDEV_PERSON_VERIFICATION_S pstAlarmData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetAlarmFGCallBack(IntPtr lpUserID, NETDEV_AlarmMessFGCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_Init();
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_Cleanup();
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_QueryVideoChlDetailList(IntPtr lpUserID, ref int pdwChlCount, IntPtr pstVideoChlList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_Discovery(String pszBeginIP, String pszEndIP);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_RealPlay(IntPtr lpUserID, ref NETDEV_PREVIEWINFO_S pstPreviewInfo, IntPtr cbPlayDataCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopRealPlay(IntPtr lpRealHandle);
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetBitRate(IntPtr lpRealHandle, ref int pdwBitRate);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetFrameRate(IntPtr lpRealHandle, ref int pdwFrameRate);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetVideoEncodeFmt(IntPtr lpRealHandle, ref int pdwVideoEncFmt);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetResolution(IntPtr lpRealHandle, ref int pdwWidth, ref int pdwHeight);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetLostPacketRate(IntPtr lpRealHandle, ref int pulRecvPktNum, ref int pulLostPktNum);
 
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZControl(IntPtr lpPlayHandle, Int32 dwPTZCommand, Int32 dwSpeed);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZControl_Other(IntPtr lpUserID, Int32 dwChannelID, Int32 dwPTZCommand, Int32 dwSpeed);
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CapturePicture(IntPtr lpRealHandle, byte[] szFileName, Int32 dwCaptureMode);
 
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SaveRealData(IntPtr lpRealHandle, byte[] szSaveFileName, Int32 dwFormat);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopSaveRealData(IntPtr lpRealHandle);
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindFile(IntPtr lpUserID, ref NETDEV_FILECOND_S pFindCond);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextFile(IntPtr lpFindHandle, ref NETDEV_FINDDATA_S lpFindData); /*NETDEV_FINDDATA_S*/
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindClose(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PlayBackControl(IntPtr lpPlayHandle, Int32 dwControlCode, ref Int64 pdwBuffer);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_GetFileByTime(IntPtr lpUserID, ref NETDEV_PLAYBACKCOND_S pstPlayBackCond, byte[] pszSaveFileName, Int32 dwFormat);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopGetFile(IntPtr lpPlayHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZPreset_Other(IntPtr lpUserID, Int32 dwChannelID, Int32 dwPTZPresetCmd, byte[] szPresetName, Int32 dwPresetID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPTZPresetList(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_ALLPRESETS_S lpOutBuffer);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetUpnpNatState(IntPtr lpUserID, ref NETDEV_UPNP_NAT_STATE_S pstNatState);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref int index, int dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_DEFOGGING_INFO_S lpInBuffer, int dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_DEFOGGING_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_MOTION_ALARM_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_MOTION_ALARM_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_TAMPER_ALARM_INFO_S lpOutBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_TAMPER_ALARM_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_SYSTEM_NTP_INFO_LIST_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetTrafficStatistic(IntPtr lpUserID, ref NETDEV_TRAFFIC_STATISTICS_COND_S pstStatisticCond, ref NETDEV_TRAFFIC_STATISTICS_DATA_S pstTrafficStatistic);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StartMultiTrafficStatistic(IntPtr lpUserID, ref NETDEV_MULTI_TRAFFIC_STATISTICS_COND_S pstStatisticCond, ref UInt32 udwSearchID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopTrafficStatistic(IntPtr lpUserID, UInt32 udwSearchID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetTrafficStatisticProgress(IntPtr lpUserID, UInt32 udwSearchID, ref UInt32 pudwProgress);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindTrafficStatisticInfoList(IntPtr lpUserID, UInt32 udwSearchID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextTrafficStatisticInfo(IntPtr lpFindHandle, ref NETDEV_TRAFFIC_STATISTICS_INFO_S pstStatisticInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseTrafficStatisticInfo(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetConnectTime(Int32 dwWaitTime, Int32 dwTrytimes);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPictureFluency(IntPtr lpPlayHandle, Int32 dwFluency);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_MakeKeyFrame(IntPtr lpUserID, Int32 dwChannelID, Int32 dwStreamType);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetSoundVolume(IntPtr lpPlayHandle, ref Int32 pdwVolume);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SoundVolumeControl(IntPtr lpPlayHandle, Int32 dwVolume);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetMicVolume(IntPtr lpPlayHandle, ref Int32 dwVolume);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_MicVolumeControl(IntPtr lpPlayHandle, Int32 dwVolume);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_OpenMic(IntPtr lpPlayHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CloseMic(IntPtr lpPlayHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_StartInputVoiceSrv(IntPtr lpUserID, Int32 dwChannelID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopInputVoiceSrv(IntPtr lpVoiceComHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_InputVoiceData(IntPtr lpUserID, byte[] lpDataBuf, Int32 dwDataLen, ref NETDEV_AUDIO_SAMPLE_PARAM_S pstVoiceParam);
 
         /* interface function end */
@@ -7939,786 +7940,786 @@ namespace NETSDKHelper //宇视
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_PARSE_VIDEO_DATA_CALLBACK_PF(IntPtr lpRealHandle, ref NETDEV_PARSE_VIDEO_DATA_S pstParseVideoData, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetSDKVersion();
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_Login(String szDevIP, Int16 wDevPort, String szUserName, String szPassword, ref NETDEV_DEVICE_INFO_S pstDevInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_Logout(IntPtr lpUserID);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         public static extern void OutputDebugString(string message);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PlaySound(IntPtr lpRealHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopPlaySound(IntPtr lpRealHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ResetLostPacketRate(IntPtr lpRealHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CaptureNoPreview(IntPtr lpUserID, Int32 dwChannelID, Int32 dwStreamType, String szFileName, Int32 dwCaptureMode);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetRenderScale(IntPtr lpRealHandle, Int32 enRenderScale); /*NETDEV_RENDER_SCALE_E*/
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_PlayBackByName(IntPtr lpUserID, ref NETDEV_PLAYBACKINFO_S pstPlayBackInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_PlayBackByTime(IntPtr lpUserID, ref NETDEV_PLAYBACKCOND_S pstPlayBackInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopPlayBack(IntPtr lpPlayHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_GetFileByName(IntPtr lpUserID, ref NETDEV_PLAYBACKINFO_S pstPlayBackInfo, String szSaveFileName, Int32 dwFormat);
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZPreset(IntPtr lpPlayHandle, Int32 dwPTZPresetCmd, String pszPresetName, Int32 dwPresetID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, IntPtr lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, IntPtr lpInBuffer, ref int dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_Reboot(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_OpenSound(IntPtr lpRealHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CloseSound(IntPtr lpRealHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetLastError();
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZSelZoomIn_Other(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_OPERATEAREA_S pstPtzOperateArea);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_Login_V30(ref NETDEV_DEVICE_LOGIN_INFO_S pstDevLoginInfo, ref NETDEV_SELOG_INFO_S pstSELogInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindOrgInfoList(IntPtr lpUserID, ref NETDEV_ORG_FIND_COND_S pstFindCond);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextOrgInfo(IntPtr lpFindHandle, ref NETDEV_ORG_INFO_S pstOrgInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseOrgInfo(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddOrgInfo(IntPtr lpUserID, ref NETDEV_ORG_INFO_S pstOrgInfo, ref Int32 pdwOrgID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyOrgInfo(IntPtr lpUserID, ref NETDEV_ORG_INFO_S pstOrgInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_BatchDeleteOrgInfo(IntPtr lpUserID, ref NETDEV_DEL_ORG_INFO_S pstOrgDelInfo, ref NETDEV_ORG_BATCH_DEL_INFO_S pstOrgDelResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindDevList(IntPtr lpUserID, Int32 dwDevType);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextDevInfo(IntPtr lpFindHandle, ref NETDEV_DEV_BASIC_INFO_S pstDevBasicInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseDevInfo(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindDevChnList(IntPtr lpUserID, Int32 dwDevID, Int32 dwChnType);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextDevChn(IntPtr lpFindHandle, IntPtr lpOutBuffer, int dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseDevChn(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDeviceInfo(IntPtr lpUserID, ref NETDEV_DEVICE_INFO_S pstDevInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDeviceInfo_V30(IntPtr lpUserID, Int32 dwDevID, ref NETDEV_DEV_INFO_V30_S pstDevInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetChnType(IntPtr lpUserID, Int32 dwChnID, ref Int32 pdwChnType);// pdwChnType: see NETDEV_CHN_TYPE_E
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetChnDetailByChnType(IntPtr lpUserID, Int32 dwChnID, Int32 dwChnType, IntPtr lpOutBuffer, int dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZGetCruise(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_CRUISE_LIST_S pstCruiseList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZCruise_Other(IntPtr lpUserID, Int32 dwChannelID, Int32 dwPTZCruiseCmd, ref NETDEV_CRUISE_INFO_S pstCruiseInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZGetTrackCruise(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_TRACK_INFO_S pstTrackCruiseInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZTrackCruise(IntPtr lpUserID, Int32 dwChannelID, Int32 dwPTZTrackCruiseCmd, string pszTrackCruiseName);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_VIDEO_STREAM_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZCalibrate(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_ORIENTATION_INFO_S pstOrientationInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_VIDEO_STREAM_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IMAGE_SETTING_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IMAGE_SETTING_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_SYSTEM_NTP_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_SYSTEM_NTP_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_NETWORKCFG_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_NETWORKCFG_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_ALARM_OUTPUT_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_ALARM_OUTPUT_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_RECORD_PLAN_CFG_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_RECORD_PLAN_CFG_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_TRIGGER_ALARM_OUTPUT_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_TRIGGER_ALARM_OUTPUT_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_VIDEO_OSD_CFG_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_VIDEO_OSD_CFG_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_ALARM_INPUT_LIST_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_ALARM_OUTPUT_LIST_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_DEVICE_BASICINFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_DISK_INFO_LIST_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_PRIVACY_MASK_CFG_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_SYSTEM_NTP_INFO_LIST_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IMAGE_EXPOSURE_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IMAGE_EXPOSURE_S lpInBuffer, Int32 dwOutBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_PRIVACY_MASK_CFG_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IRCUT_FILTER_INFO_S lpInBuffer, Int32 dwOutBufferSize, ref int pdwBytesReturned);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDevConfig(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand, ref NETDEV_IRCUT_FILTER_INFO_S lpInBuffer, Int32 dwInBufferSize);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_RestoreConfig(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetVideoEffect(IntPtr lpRealHandle, ref NETDEV_VIDEO_EFFECT_S pstImageInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetVideoEffect(IntPtr lpRealHandle, ref NETDEV_VIDEO_EFFECT_S pstImageInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetDigitalZoom(IntPtr lpRealHandle, IntPtr hWnd, IntPtr pstRect);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetUpnpNatState(IntPtr lpUserID, ref NETDEV_UPNP_NAT_STATE_S pstNatState);
 
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyDeviceName(IntPtr lpUserID, byte[] strDeviceName);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetLogPath(String strLogPath);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetSystemTimeCfg(IntPtr lpUserID, ref NETDEV_TIME_CFG_S pstSystemTimeInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetSystemTimeCfg(IntPtr lpUserID, ref NETDEV_TIME_CFG_S pstSystemTimeInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetRevTimeOut(ref NETDEV_REV_TIMEOUT_S pstRevTimeout);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPlayDecodeVideoCB(IntPtr lpRealHandle, NETDEV_DECODE_VIDEO_DATA_CALLBACK_PF cbPlayDecodeVideoCallBack, Int32 bContinue, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPlayDataCallBack(IntPtr lpRealHandle, IntPtr cbPlayDataCallBack, Int32 bContinue, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPlayDisplayCB(IntPtr lpRealHandle, IntPtr cbPlayDisplayCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPlayParseCB(IntPtr lpRealHandle, IntPtr cbPlayParseCallBack, Int32 bContinue, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_StartVoiceCom(IntPtr lpUserID, Int32 dwChannelID, IntPtr cbPlayDataCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopVoiceCom(IntPtr lpVoiceComHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetUserDetailList(IntPtr lpUserID, IntPtr pstUserDetailList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteUser(IntPtr lpUserID, String strUserName);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CreateUser(IntPtr lpUserID, IntPtr stUserInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyUser(IntPtr lpUserID, IntPtr pstUserInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetCompassInfo(IntPtr lpUserID, Int32 dwChannelID, ref float fCompassInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetGeolocationInfo(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_GEOLACATION_INFO_S pstGPSInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetConfigFile(IntPtr lpUserID, String strConfigPath);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetConfigFile(IntPtr lpUserID, String strConfigPath);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetIVAEnable(IntPtr lpUserID, Int32 dwEnableIVA);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetIVAShowParam(Int32 dwShowParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPersonLibCapacity(IntPtr lpUserID, Int32 dwTimeOut, ref NETDEV_PERSON_LIB_CAP_LIST_S pstCapacityList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_CreatePersonLibInfo(IntPtr lpUserID, ref NETDEV_LIB_INFO_S pstPersonLibInfo, ref UInt32 pudwID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindPersonLibList(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextPersonLibInfo(IntPtr lpFindHandle, ref NETDEV_LIB_INFO_S pstPersonLibInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindClosePersonLibList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyPersonLibInfo(IntPtr lpUserID, ref NETDEV_PERSON_LIB_LIST_S pstPersonLibList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeletePersonLibInfo(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_DELETE_DB_FLAG_INFO_S pstFlagInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindPersonInfoList(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_PERSON_QUERY_INFO_S pstQueryInfo, ref NETDEV_BATCH_OPERATE_BASIC_S pstQueryResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextPersonInfo(IntPtr lpFindHandle, ref NETDEV_PERSON_INFO_S pstPersonInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindClosePersonInfoList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPersonMemberInfo(IntPtr lpUserID, UInt32 udwPersonID, ref NETDEV_PERSON_INFO_S pstPersonInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddPersonInfo(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_PERSON_INFO_LIST_S pstPersonInfoList, ref NETDEV_PERSON_RESULT_LIST_S pstPersonResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyPersonInfo(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_PERSON_INFO_LIST_S pstPersonInfoList, ref NETDEV_PERSON_RESULT_LIST_S pstPersonResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeletePersonInfo(IntPtr lpUserID, UInt32 udwPersonLibID, UInt32 udwPersonID, UInt32 udwLastChange);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeletePersonInfoList(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_BATCH_OPERATE_MEMBER_LIST_S pstIDList, ref NETDEV_BATCH_OPERATOR_LIST_S pstResutList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindFaceRecordDetailList(IntPtr lpUserID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindCond, ref NETDEV_SMART_ALARM_LOG_RESULT_INFO_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextFaceRecordDetail(IntPtr lpFindHandle, ref NETDEV_FACE_RECORD_SNAPSHOT_INFO_S pstRecordInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseFaceRecordDetail(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetFaceRecordImageInfo(IntPtr lpUserID, UInt32 udwRecordID, UInt32 udwFaceImageType, ref NETDEV_FILE_INFO_S pstFileInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindPersonMonitorList(IntPtr lpUserID, UInt32 udwChannelID, ref NETDEV_MONITOR_QUERY_INFO_S pstQueryInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextPersonMonitorInfo(IntPtr lpFindHandle, ref NETDEV_MONITION_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindClosePersonMonitorList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddPersonMonitorInfo(IntPtr lpUserID, ref NETDEV_MONITION_INFO_S pstMonitorInfo, ref NETDEV_MONITOR_RESULT_INFO_S pstMonitorResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_BatchDeletePersonMonitorInfo(IntPtr lpUserID, ref NETDEV_BATCH_OPERATOR_LIST_S pstResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPersonMonitorRuleInfo(IntPtr lpUserID, ref NETDEV_MONITION_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPersonMonitorRuleInfo(IntPtr lpUserID, ref NETDEV_MONITION_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetMonitorProgress(IntPtr lpUserID, ref UInt32 pudwProgressRate);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindMonitorStatusList(IntPtr lpUserID, Int32 enType, ref UInt32 udwMonitorID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindLimit, ref NETDEV_SMART_ALARM_LOG_RESULT_INFO_S pstList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextMonitorStatusInfo(IntPtr lpFindHandle, ref NETDEV_MONITOR_MEMBER_INFO_S pstMonitorStats);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseMonitorStatusList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetMonitorCapacity(IntPtr lpUserID, ref NETDEV_MONITOR_CAPACITY_INFO_S pstCapacityInfo, ref NETDEV_MONITOR_CAPACITY_LIST_S pstCapacityList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindVehicleLibList(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextVehicleLibInfo(IntPtr lpFindHandle, ref NETDEV_LIB_INFO_S pstVehicleLibInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseVehicleLibList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddVehicleLibInfo(IntPtr lpUserID, ref NETDEV_LIB_INFO_S pstVehicleLibInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyVehicleLibInfo(IntPtr lpUserID, ref NETDEV_PERSON_LIB_LIST_S pstVehicleLibList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteVehicleLibInfo(IntPtr lpUserID, UInt32 udwVehicleLibID, ref NETDEV_DELETE_DB_FLAG_INFO_S pstDelLibFlag);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddVehicleMemberList(IntPtr lpUserID, UInt32 udwLibID, ref NETDEV_VEHICLE_INFO_LIST_S pstVehicleMemberList, ref NETDEV_BATCH_OPERATOR_LIST_S pstResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyVehicleMemberInfo(IntPtr lpUserID, UInt32 udwVehicleLibID, ref NETDEV_VEHICLE_INFO_LIST_S pstVehicleMemberList, ref NETDEV_BATCH_OPERATOR_LIST_S pstResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DelVehicleMemberList(IntPtr lpUserID, UInt32 udwLib, ref NETDEV_VEHICLE_INFO_LIST_S pstVehicleMemberList, ref NETDEV_BATCH_OPERATOR_LIST_S pstBatchList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindVehicleMemberDetailList(IntPtr lpUserID, UInt32 udwVehicleLibID, ref NETDEV_PERSON_QUERY_INFO_S pstFindCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstDBMemberList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextVehicleMemberDetail(IntPtr lpFindHandle, ref NETDEV_VEHICLE_DETAIL_INFO_S pstVehicleMemberInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseVehicleMemberDetail(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindVehicleRecordInfoList(IntPtr lpUserID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindCond, ref NETDEV_SMART_ALARM_LOG_RESULT_INFO_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextVehicleRecordInfo(IntPtr lpFindHandle, ref NETDEV_VEHICLE_RECORD_INFO_S pstRecordInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseVehicleRecordList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetVehicleRecordImageInfo(IntPtr lpUserID, UInt32 udwRecordID, ref NETDEV_FILE_INFO_S pstFileInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddVehicleLibMember(IntPtr lpUserID, UInt32 udwVehicleLibID, ref NETDEV_BATCH_OPERATE_MEMBER_LIST_S pstMemberList, ref NETDEV_BATCH_OPERATOR_LIST_S pstBatchResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteVehicleLibMember(IntPtr lpUserID, UInt32 udwVehicleLibID, ref NETDEV_BATCH_OPERATE_MEMBER_LIST_S pstMemberList, ref NETDEV_BATCH_OPERATOR_LIST_S pstBatchResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddVehicleMonitorInfo(IntPtr lpUserID, ref NETDEV_MONITION_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteVehicleMonitorInfo(IntPtr lpUserID, ref NETDEV_BATCH_OPERATOR_LIST_S pstBatchList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindVehicleMonitorList(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextVehicleMonitorInfo(IntPtr lpFindHandle, ref NETDEV_MONITION_INFO_S pstVehicleMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseVehicleMonitorList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetVehicleMonitorInfo(IntPtr lpUserID, UInt32 udwID, ref NETDEV_MONITION_RULE_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetVehicleMonitorInfo(IntPtr lpUserID, UInt32 udwID, ref NETDEV_MONITION_RULE_INFO_S pstMonitorInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SubscribeSmart(IntPtr lpUserID, ref NETDEV_SUBSCRIBE_SMART_INFO_S pstSubscribeInfo, ref NETDEV_SMART_INFO_S pstSmartInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_UnsubscribeSmart(IntPtr lpUserID, ref NETDEV_SMART_INFO_S pstSmartInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SubscibeLapiAlarm(IntPtr lpUserID, ref NETDEV_LAPI_SUB_INFO_S pstSubInfo, ref NETDEV_SUBSCRIBE_SUCC_INFO_S pstSubSuccInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_UnSubLapiAlarm(IntPtr lpUserID, UInt32 udwID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindACSPersonList(IntPtr lpUserID, ref NETDEV_PERSON_QUERY_INFO_S pstQueryCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextACSPersonInfo(IntPtr lpFindHandle, ref NETDEV_ACS_PERSON_BASE_INFO_S pstACSPersonInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseACSPersonInfo(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ACSPersonCtrl(IntPtr lpUserID, Int32 dwCommand, ref NETDEV_ACS_PERSON_INFO_S pstACSPersonInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddACSPersonList(IntPtr lpUserID, ref NETDEV_ACS_PERSON_LIST_S pstACSPersonList, ref NETDEV_XW_BATCH_RESULT_LIST_S pstResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteACSPersonList(IntPtr lpUserID, ref NETDEV_FACE_BATCH_LIST_S pstBatchCtrlInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetTimeTemplateList(IntPtr lpUserID, Int32 dwTamplateType, ref NETDEV_TIME_TEMPLATE_LIST_S pstTemplateList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetTimeTemplateInfo(IntPtr lpUserID, Int32 dwTemplateID, ref NETDEV_TIME_TEMPLATE_INFO_V30_S pstTimeTemplateInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindACSPermissionGroupList(IntPtr lpUserID, ref NETDEV_PERSON_QUERY_INFO_S pstQueryCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextACSPermissionGroupInfo(IntPtr lpFindHandle, ref NETDEV_ACS_PERMISSION_INFO_S pstACSPermissionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseACSPermissionGroupList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddACSPersonPermissionGroup(IntPtr lpUserID, ref NETDEV_ACS_PERMISSION_INFO_S pstPermissionGroupInfo, ref UInt32 pUdwGroupID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyACSPersonPermissionGroup(IntPtr lpUserID, ref NETDEV_ACS_PERMISSION_INFO_S pstPermissionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteACSPersonPermissionGroup(IntPtr lpUserID, ref NETDEV_OPERATE_LIST_S pstPermissionIDList, ref NETDEV_BATCH_OPERATOR_LIST_S pstResutList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetSinglePermGroupInfo(IntPtr lpUserID, UInt32 udwPermissionGroupID, ref NETDEV_ACS_PERMISSION_INFO_S pstAcsPerssionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindPermStatusList(IntPtr lpUserID, ref UInt32 udwPermGroupID, ref NETDEV_ALARM_LOG_COND_LIST_S pstQueryInfo, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextPermStatusInfo(IntPtr lpFindHandle, ref NETDEV_ACS_PERM_STATUS_S pstACSPermStatus);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindClosePermStatusList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetACSPersonPermission(IntPtr lpUserID, UInt32 udwPersonID, ref NETDEV_ACS_DOOR_PERMISSION_INFO_S pstPermissionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetACSPersonPermission(IntPtr lpUserID, UInt32 udwPersonID, ref NETDEV_ACS_DOOR_PERMISSION_INFO_S pstPermissionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DoorCtrl(IntPtr lpUserID, Int32 dwChannelID, Int32 dwCommand);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DoorBatchCtrl(IntPtr lpUserID, Int32 dwCommand, ref NETDEV_OPERATE_LIST_S pstBatchCtrlInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindACSVisitLogList(IntPtr lpUserID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextACSVisitLog(IntPtr lpFindHandle, ref NETDEV_ACS_VISIT_LOG_INFO_S pstACSLogInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseACSVisitLog(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindACSPersonBlackList(IntPtr lpUserID, ref NETDEV_PAGED_QUERY_INFO_S pstQueryCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextACSPersonBlackListInfo(IntPtr lpFindHandle, ref NETDEV_ACS_PERSON_BLACKLIST_INFO_S pstBlackListInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseACSPersonBlackList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddACSPersonBlackList(IntPtr lpUserID, ref NETDEV_ACS_PERSON_BLACKLIST_INFO_S pstBlackListInfo, ref UInt32 pUdwBlackListID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteACSPersonBlackList(IntPtr lpUserID, ref NETDEV_OPERATE_LIST_S pstBlackList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyACSPersonBlackList(IntPtr lpUserID, ref NETDEV_ACS_PERSON_BLACKLIST_INFO_S pstBlackListInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetACSPersonBlackList(IntPtr lpUserID, ref NETDEV_ACS_PERSON_BLACKLIST_INFO_S pstBlackListInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindACSAttendanceLogList(IntPtr lpUserID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindCond, ref NETDEV_BATCH_OPERATE_BASIC_S pstResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextACSAttendanceLog(IntPtr lpFindHandle, ref NETDEV_ACS_ATTENDANCE_LOG_INFO_S pstACSLogInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseACSAttendanceLogList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetSystemPicture(IntPtr lpUserID, string pszURL, UInt32 udwSize, IntPtr pszdata);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindRoleInfoList(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextRoleInfo(IntPtr lpFindHandle, ref NETDEV_ROLE_INFO_S pstRoleInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseRoleInfoList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindTimeTemplateByTypeList(IntPtr lpUserID, UInt32 udwTemplateType);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextTimeTemplateByTypeInfo(IntPtr lpFindHandle, ref NETDEV_TIME_TEMPLATE_BASE_INFO_S pstTimeTemplateInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseTimeTemplateByTypeList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindUserDetailInfoListV30(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextUserDetailInfoV30(IntPtr lpFindHandle, ref NETDEV_USER_DETAIL_INFO_V30_S pstUserDetailInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseUserDetailInfoListV30(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindRoleBaseInfoOfUserList(IntPtr lpUserID, UInt32 udwUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextRoleBaseInfoOfUser(IntPtr lpFindHandle, ref NETDEV_ROLE_BASE_INFO_S pstRoleBaseInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseRoleBaseInfoOfUserList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetTimeTemplate(IntPtr lpFindHandle, ref NETDEV_SYSTEM_TIME_TEMPLATE_S pstTimeTemplate);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteUserV30(IntPtr lpFindHandle, UInt32 udwUserNum, ref NETDEV_USER_NAME_INFO_LIST_S pstUserNameList, ref NETDEV_BATCH_OPERATOR_LIST_S pstResultList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyUserV30(IntPtr lpFindHandle, ref NETDEV_USER_DETAIL_INFO_V30_S pstUserModifyInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyRoleInfoOfUser(IntPtr lpFindHandle, UInt32 udwUserID, ref NETDEV_ID_LIST_S pstRoleList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetUserDetailInfoV30(IntPtr lpFindHandle, ref NETDEV_USER_DETAIL_INFO_V30_S pstUserDetailInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyCurrentPin(IntPtr lpFindHandle, String szOldPassword, String szNewPassword);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddUserV30(IntPtr lpFindHandle, ref NETDEV_USER_DETAIL_INFO_V30_S pstUserModifyInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZGetStatus(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_STATUS_S pstPTZStaus);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_PTZAbsoluteMove(IntPtr lpUserID, Int32 dwChannelID, NETDEV_PTZ_ABSOLUTE_MOVE_S pstAbsoluteMove);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPTZAbsolutePTInfo(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_PT_POSITION_INFO_S pstPTPositionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPTZAbsolutePTInfo(IntPtr lpUserID, Int32 dwChannelID, ref NETDEV_PTZ_PT_POSITION_INFO_S pstPTPositionInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPTZAbsoluteZoomInfo(IntPtr lpUserID, Int32 dwChannelID, ref float fZoomRatio);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPTZAbsoluteZoomInfo(IntPtr lpUserID, Int32 dwChannelID, float fZoomRatio);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetVideoDayNums(IntPtr lpUserID, Int32 dwChannelID, ref Int32 dwDayNums);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_ConflagrationAlarmMessCallBack_PF(IntPtr lpHandle, ref NETDEV_CONFLAGRATION_ALARM_INFO_S pstAlarmInfo, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetConflagrationAlarmCallBack(IntPtr lpUserID, NETDEV_ConflagrationAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_CarPlateCallBack_PF(IntPtr lpHandle, ref NETDEV_TMS_CAR_PLATE_INFO_S pstCarPlateData, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetCarPlateCallBack(IntPtr lpUserID, NETDEV_CarPlateCallBack_PF cbCarPlateCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_QueryRecordRange(IntPtr lpUserID, ref NETDEV_CHANNEL_LIST_S pstChlList, ref NETDEV_RECORD_TIME_LIST_S pstRecordTimeList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SyncPersonLibToDevice(IntPtr lpUserID, UInt32 udwPersonLibID, ref NETDEV_ID_LIST_S pstDeviceIDList);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetPtzAndFixMode(IntPtr lpPlayHandle, ref Int32 pdwPtzMode, ref Int32 pdwInstallMode);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPtzAndFixMode(IntPtr lpPlayHandle, Int32 pdwPtzMode, Int32 pdwInstallMode);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_IsFishEyeStream(IntPtr lpPlayHandle, ref Int32 pbFishEyeStream);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetMouseMoveMode(IntPtr lpPlayHandle, Int32 dwOperateMode, UInt32 udwFlag, Int32 wDelta, ref NETDEV_POINT_S pstPoint);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_PeopleCountAlarmMessCallBack_PF(IntPtr lpHandle, ref NETDEV_PEOPLE_COUNT_ALARM_INFO_S pstAlarmInfo, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPeopleCountAlarmCallBack(IntPtr lpUserID, NETDEV_PeopleCountAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindCrowdDensityGroupList(IntPtr lpUserID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextCrowdDensityGroupInfo(IntPtr lpFindHandle, ref NETDEV_CROWD_DENSITY_GROUP_INFO_S pstCrowdDensityGroupInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseCrowdDensityGroupList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_AddCrowdDensityGroupInfo(IntPtr lpUserID, ref NETDEV_CROWD_DENSITY_GROUP_INFO_S pstCrowdDensityGroupInfo, ref UInt32 pUdwGroupID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ModifyCrowdDensityGroupInfo(IntPtr lpUserID, ref NETDEV_CROWD_DENSITY_GROUP_INFO_S pstCrowdDensityGroupInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_DeleteCrowdDensityGroupInfo(IntPtr lpUserID, UInt32 udwCrowdDensityGroupID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetCrowdDensityGroupInfo(IntPtr lpUserID, UInt32 udwCrowdDensityGroupID, ref NETDEV_CROWD_DENSITY_GROUP_INFO_S pstCrowdDensityGroupInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_ResetLinesPeopleCounting(IntPtr lpUserID, UInt32 udwChannelID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StartObjectSearch(IntPtr lpUserID, ref NETDEV_QUERY_CHN_CONDITION_S pstStartInfo, ref UInt32 pudwSearchID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_StopObjectSearch(IntPtr lpUserID, UInt32 udwSearchID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_GetObjectSearchProg(IntPtr lpUserID, UInt32 udwSearchID, ref UInt32 pudwPercent);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindObjectSearchList(IntPtr lpUserID, ref NETDEV_PIC_QUERY_COND_S pstQueryCond, ref NETDEV_PIC_QUERY_RESULT_S pstQueryResult);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextObjectSearchInfo(IntPtr lpFindHandle, ref NETDEV_OBJECT_RESULT_INFO_S pstObjectResultInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseObjectSearchList(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindFile_V30(IntPtr lpUserID, ref NETDEV_FILECOND_S pstFindCond);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindAlarmLogList(IntPtr lpUserID, ref NETDEV_ALARM_LOG_COND_LIST_S pstFindCond, ref Int32 pdwTotalRealRow);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextAlarmLog(IntPtr lpFindHandle, ref NETDEV_ALARM_LOG_INFO_S pstAlarmLogInfo);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseAlarmLog(IntPtr lpFindHandle);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern IntPtr NETDEV_FindAlarmRelatedDataList(IntPtr lpUserID, Int32 dwAlarmID);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindNextAlarmRelatedDataInfo(IntPtr lpFindHandle, ref NETDEV_ALARM_RELATED_DATA_S pstAlarmRelatedData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_FindCloseAlarmRelatedDataList(IntPtr lpFindHandle);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_ConflagrationAlarmCallBack_PF_V30(IntPtr lpHandle, ref NETDEV_CONFLAGRATION_ALARM_INFO_V30_S pstAlarmInfo, IntPtr lpUserParam);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetConflagrationAlarmCallBackV30(IntPtr lpUserID, NETDEV_ConflagrationAlarmCallBack_PF_V30 cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_PicAlarmMessCallBack_PF(IntPtr lpUserID, ref NETDEV_ALARM_PIC_DATA_S pstAlarmPicData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetPicAlarmCallBack(IntPtr lpUserID, NETDEV_PicAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetThermalParam(IntPtr lpPlayHandle, ref NETDEV_THERMAL_PARAM_INFO_S pstThermalParam);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_SmokeAlarmMessCallBack_PF(IntPtr lpUserID, ref NETDEV_SMOKE_DETC_S pstSmokeAlarmData, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetSmokeAlarmCallBack(IntPtr lpUserID, NETDEV_SmokeAlarmMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
 
         [UnmanagedFunctionPointer(CallingConvention.StdCall, CharSet = CharSet.Ansi)]
         public delegate void NETDEV_TemperatureDetcMessCallBack_PF(IntPtr lpUserID, ref NETDEV_TEMPERATURE_ALARM_INFO_S pstTemperatureDetcInfo, IntPtr lpUserData);
 
-        [DllImport("NetDEVSDK.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(dllPath, CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         public static extern Int32 NETDEV_SetTemperatureDetcCallBack(IntPtr lpUserID, NETDEV_TemperatureDetcMessCallBack_PF cbAlarmMessCallBack, IntPtr lpUserData);
     }
 }
