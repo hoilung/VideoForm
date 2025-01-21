@@ -61,6 +61,26 @@ namespace VideoForm.Properties {
         }
         
         /// <summary>
+        ///   查找类似 #软件配置
+        ///APP_StartPosition=1  //启动位置：0-系统默认，1-屏幕中央，2-自动位置
+        ///APP_BorderStyle=1  //边框样式：0-可调整，1-不可以调整
+        ///APP_Size=480,360  //图像大小：宽,高   ，最小是480,360
+        ///#海康配置
+        ///HK_Channel=1    //设备通道
+        ///HK_StreamType=1    //码流类型：0-主码流，1-子码流，2-码流3，3-码流4，以此类推
+        ///HK_LinkMode=4    //连接方式：0- TCP方式，1- UDP方式，2- 多播方式，3- RTP方式，4-RTP/RTSP，5-RSTP/HTTP 
+        ///#宇视配置
+        ///UV_Channel=1    //通道号
+        ///UV_StreamType=1    //0主码流，1子码流
+        ///UV_LinkMode=1  //连接方式：0-UDP方式，1-TCP方式 的本地化字符串。
+        /// </summary>
+        internal static string conf_ini {
+            get {
+                return ResourceManager.GetString("conf_ini", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
         internal static byte[] hk_dll {

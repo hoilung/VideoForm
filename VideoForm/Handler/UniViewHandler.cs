@@ -1,5 +1,6 @@
 ﻿using NETSDKHelper;
 using System;
+using VideoForm.Model;
 
 
 namespace VideoForm.Handler
@@ -96,6 +97,17 @@ namespace VideoForm.Handler
             stPreviewInfo.dwChannelID = 1;
             stPreviewInfo.dwLinkMode = 1;// (int)NETDEV_PROTOCAL_E.NETDEV_TRANSPROTOCAL_RTPTCP;
             stPreviewInfo.dwStreamType = 1;// (int)NETDEV_LIVE_STREAM_INDEX_E.NETDEV_LIVE_STREAM_INDEX_AUX;//0主码流 1子码流
+
+            if (Conf.Instance.Item != null)
+            {
+                if (Conf.Instance.Item.UV_Channel != 0)
+                    stPreviewInfo.dwChannelID = Conf.Instance.Item.UV_Channel;
+                if (Conf.Instance.Item.UV_LinkMode > -1)
+                    stPreviewInfo.dwLinkMode = Conf.Instance.Item.UV_LinkMode;
+                if (Conf.Instance.Item.UV_StreamType > -1)
+                    stPreviewInfo.dwStreamType = Conf.Instance.Item.UV_StreamType;
+            }
+
             m_lpRealPlay = NETDEVSDK.NETDEV_RealPlay(m_lpDevHandle, ref stPreviewInfo, IntPtr.Zero, IntPtr.Zero);
             if (m_lpRealPlay == IntPtr.Zero)
             {

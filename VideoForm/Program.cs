@@ -47,6 +47,12 @@ namespace VideoForm
             //只有一个参数的时候，替换显示图像
             if (args.Length == 1)
             {
+                if (args[0].StartsWith("conf"))
+                {
+                    Model.Conf.Instance.Create();
+                    return;
+                }
+
                 //var ps = System.Diagnostics.Process.GetProcessesByName("VideoForm");
                 var p1 = WINDOWSMSG.FindWindow(null, "视频预览...");
                 if (p1 != IntPtr.Zero)// (ps.Length > 1)

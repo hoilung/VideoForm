@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Handler\HKHandler.cs" />
     <Compile Include="Handler\UniViewHandler.cs" />
+    <Compile Include="Model\Conf.cs" />
     <Compile Include="Model\VideoSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

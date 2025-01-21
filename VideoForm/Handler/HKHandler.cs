@@ -1,5 +1,6 @@
 ﻿using System;
 using VideoForm.Common;
+using VideoForm.Model;
 
 namespace VideoForm.Handler
 {
@@ -124,6 +125,15 @@ namespace VideoForm.Handler
                 lpPreviewInfo.dwDisplayBufNum = 15;//播放库播放缓冲区最大缓冲帧数
                 lpPreviewInfo.byProtoType = 0;
                 lpPreviewInfo.byPreviewMode = 0;
+                if(Conf.Instance.Item!= null)
+                {
+                    if(Conf.Instance.Item.HK_Channel>0)
+                        lpPreviewInfo.lChannel = Conf.Instance.Item.HK_Channel;
+                    if (Conf.Instance.Item.HK_StreamType > -1)
+                        lpPreviewInfo.dwStreamType = (uint)Conf.Instance.Item.HK_StreamType;
+                    if (Conf.Instance.Item.HK_LinkMode>-1)
+                        lpPreviewInfo.dwLinkMode = (uint)Conf.Instance.Item.HK_LinkMode;                            
+                }
 
 
                 IntPtr pUser = new IntPtr();//用户数据

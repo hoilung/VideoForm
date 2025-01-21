@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VideoForm.Common;
 using VideoForm.Handler;
+using VideoForm.Model;
 
 namespace VideoForm
 {
@@ -13,16 +15,47 @@ namespace VideoForm
         public Main()
         {
             InitializeComponent();
-            hkHandler = new HKHandler();//海康
-            hkHandler.Msg += Handler_Msg;
+            try
+            {
+                hkHandler = new HKHandler();//海康
+                hkHandler.Msg += Handler_Msg;
 
-
-            uniViewHandler = new UniViewHandler();//宇视
-            uniViewHandler.Msg += Handler_Msg;
-
+                uniViewHandler = new UniViewHandler();//宇视
+                uniViewHandler.Msg += Handler_Msg;
+            }
+            catch (Exception ex)
+            {
+                Handler_Msg(ex.Message);
+            }
             this.Shown += Form1_Shown;
             this.FormClosed += Form1_FormClosed;
+            Model.Conf.Instance.Init();
 
+            if (Conf.Instance.Item != null)
+            {
+                switch (Conf.Instance.Item.APP_StartPosition)
+                {
+                    case 0:
+                        this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                        break;
+                    case 1:
+                        this.StartPosition = FormStartPosition.CenterScreen;
+                        break;
+                    case 2:
+                        SetFormPosition();
+                        break;
+                }                  
+                switch (Conf.Instance.Item.APP_BorderStyle)
+                {
+                    case 0:
+                        this.FormBorderStyle = FormBorderStyle.Sizable;
+                        break;
+                    case 1:
+                        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+                        break;                    
+                }
+                this.Size = Conf.Instance.Item.GetSize();
+            }
             //this.button1.Click += Button1_Click;
 
             //File.WriteAllText("h.txt", this.Handle.ToString());
@@ -67,13 +100,59 @@ namespace VideoForm
 
 
         private void Form1_Shown(object sender, EventArgs e)
-        {
+        {           
             Task.Run(() =>
             {
                 ShowVideo();
             });
         }
+        private void SetFormPosition()
+        {
+            // 1. 获取屏幕工作区域 (除去任务栏等系统元素)
+            Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
 
+            // 2. 获取鼠标位置
+            Point mousePoint = Cursor.Position;
+
+            // 3. 计算窗口居中于鼠标的目标位置
+            int targetLeft = mousePoint.X - this.Width / 2;
+            int targetTop = mousePoint.Y - this.Height / 2;
+
+            // 4. 边界检查： 检查窗口是否会超出屏幕工作区域
+            // 检查左边界
+            if (targetLeft < workingArea.Left)
+            {
+                targetLeft = workingArea.Left; //如果超出，则设置为屏幕工作区域左边界
+            }
+            // 检查右边界
+            if (targetLeft + this.Width > workingArea.Right)
+            {
+                targetLeft = workingArea.Right - this.Width; // 如果超出，则将窗口左边界设置为屏幕工作区域右边界减去窗口宽度
+            }
+            // 检查上边界
+            if (targetTop < workingArea.Top)
+            {
+                targetTop = workingArea.Top; // 如果超出，则将窗口顶部位置设置为屏幕工作区顶部
+            }
+            // 检查下边界
+            if (targetTop + this.Height > workingArea.Bottom)
+            {
+                targetTop = workingArea.Bottom - this.Height; //如果超出设置为屏幕工作区域的底部减去窗口的高度
+            }
+
+            // 5. 设置窗口位置
+            this.Location = new Point(targetLeft, targetTop);
+
+            // 如果要默认显示在屏幕中央，则取消注释此部分代码, 此时上面的超出屏幕的校正判断会被忽略
+            /* if ((targetLeft < workingArea.Left || (targetLeft + this.Width > workingArea.Right)) || (targetTop < workingArea.Top  || (targetTop + this.Height > workingArea.Bottom)))
+            {
+              //如果超出屏幕，则显示在屏幕中央
+                 this.StartPosition = FormStartPosition.CenterScreen;
+             } else {
+                 this.Location = new Point(targetLeft, targetTop);
+              }
+            */
+        }
 
         public void ShowVideo()
         {
@@ -85,15 +164,15 @@ namespace VideoForm
             this.Handler_Msg($"准备登录：{set.ip}");
             switch (set.category)
             {
-                case Model.categoryEnum.hikvision:                    
+                case Model.categoryEnum.hikvision:
                     hkHandler.Login(set.ip, set.port, set.username, set.password);
                     this.Handler_Msg($"开始预览：{set.ip}");
-                    hkHandler.Preview(this.pictureBox1);                    
+                    hkHandler.Preview(this.pictureBox1);
                     break;
                 case Model.categoryEnum.uniview:
                     uniViewHandler.Login(set.ip, set.port, set.username, set.password);
                     this.Handler_Msg($"开始预览：{set.ip}");
-                    uniViewHandler.StartRealPlay(this.pictureBox1);                    
+                    uniViewHandler.StartRealPlay(this.pictureBox1);
                     break;
                 default:
                     this.Handler_Msg($"不支持的设备类型");
