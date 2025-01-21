@@ -1,0 +1,7 @@
+ VideoForm.exe "file://c:/video.mp4"
+ VideoForm.exe "hikvision://admin:pwd@192.168.1.64:8000"
+ VideoForm.exe "uniview://admin:pwd@192.168.1.64:80"
+ VideoForm.exe "rtmp://192.168.1.64/live/stream"
+ VideoForm.exe "rtsp://192.168.1.64:554/live/stream"
+ VideoForm.exe "http://192.168.1.64:8000/stream.m3u8"
+ VideoForm.exe "http://192.168.1.64:8000/mjpg/video.mjpg"

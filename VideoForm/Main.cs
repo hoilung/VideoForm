@@ -12,6 +12,7 @@ namespace VideoForm
     {
         public HKHandler hkHandler = null;
         public UniViewHandler uniViewHandler = null;
+        private OCHandler ochandler = null;
         public Main()
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace VideoForm
 
                 uniViewHandler = new UniViewHandler();//宇视
                 uniViewHandler.Msg += Handler_Msg;
+                ochandler = new OCHandler(this.pictureBox1);
+                ochandler.Msg += Handler_Msg;
             }
             catch (Exception ex)
             {
@@ -31,31 +34,7 @@ namespace VideoForm
             this.FormClosed += Form1_FormClosed;
             Model.Conf.Instance.Init();
 
-            if (Conf.Instance.Item != null)
-            {
-                switch (Conf.Instance.Item.APP_StartPosition)
-                {
-                    case 0:
-                        this.StartPosition = FormStartPosition.WindowsDefaultLocation;
-                        break;
-                    case 1:
-                        this.StartPosition = FormStartPosition.CenterScreen;
-                        break;
-                    case 2:
-                        SetFormPosition();
-                        break;
-                }                  
-                switch (Conf.Instance.Item.APP_BorderStyle)
-                {
-                    case 0:
-                        this.FormBorderStyle = FormBorderStyle.Sizable;
-                        break;
-                    case 1:
-                        this.FormBorderStyle = FormBorderStyle.FixedSingle;
-                        break;                    
-                }
-                this.Size = Conf.Instance.Item.GetSize();
-            }
+           
             //this.button1.Click += Button1_Click;
 
             //File.WriteAllText("h.txt", this.Handle.ToString());
@@ -100,7 +79,32 @@ namespace VideoForm
 
 
         private void Form1_Shown(object sender, EventArgs e)
-        {           
+        {
+            if (Conf.Instance.Item != null)
+            {
+                switch (Conf.Instance.Item.APP_StartPosition)
+                {
+                    case 0:
+                        this.StartPosition = FormStartPosition.WindowsDefaultLocation;
+                        break;
+                    case 1:
+                        this.StartPosition = FormStartPosition.CenterScreen;
+                        break;
+                    case 2:
+                        SetFormPosition();
+                        break;
+                }
+                switch (Conf.Instance.Item.APP_BorderStyle)
+                {
+                    case 0:
+                        this.FormBorderStyle = FormBorderStyle.Sizable;
+                        break;
+                    case 1:
+                        this.FormBorderStyle = FormBorderStyle.FixedSingle;
+                        break;
+                }
+                this.Size = Conf.Instance.Item.GetSize();
+            }
             Task.Run(() =>
             {
                 ShowVideo();
@@ -161,6 +165,7 @@ namespace VideoForm
 
             hkHandler.LogOut();
             uniViewHandler.LogOut();
+            ochandler.StopPreview();
             this.Handler_Msg($"准备登录：{set.ip}");
             switch (set.category)
             {
@@ -173,6 +178,13 @@ namespace VideoForm
                     uniViewHandler.Login(set.ip, set.port, set.username, set.password);
                     this.Handler_Msg($"开始预览：{set.ip}");
                     uniViewHandler.StartRealPlay(this.pictureBox1);
+                    break;
+                case categoryEnum.file:
+                case categoryEnum.http:
+                case categoryEnum.rtmp:
+                case categoryEnum.rtsp:                    
+                    ochandler.Preview(set.playUrl);
+                    this.Handler_Msg($"开始预览：{set.playUrl}");
                     break;
                 default:
                     this.Handler_Msg($"不支持的设备类型");
