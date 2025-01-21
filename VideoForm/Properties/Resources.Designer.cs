@@ -91,6 +91,26 @@ namespace VideoForm.Properties {
         }
         
         /// <summary>
+        ///   查找类似 # VideoForm 视频预览
+        ///## 本地视频文件
+        ///VideoForm.exe &quot;file://c:/video.mp4&quot;
+        ///## 海康视频流协议
+        ///VideoForm.exe &quot;hikvision://admin:pwd@192.168.1.64:8000&quot;
+        ///## 宇视视频流协议
+        ///VideoForm.exe &quot;uniview://admin:pwd@192.168.1.64:80&quot;
+        ///## 通用视频协议 (rtmp/rtsp/http)
+        ///VideoForm.exe &quot;rtmp://192.168.1.64/live/stream&quot;
+        ///VideoForm.exe &quot;rtsp://192.168.1.64:554/live/stream&quot;
+        ///VideoForm.exe &quot;http://192.168.1.64:8000/stream.m3u8&quot;
+        ///VideoForm.exe &quot;http://192.168.1.64:8000/mjpg/video.mjpg&quot; 的本地化字符串。
+        /// </summary>
+        internal static string readme {
+            get {
+                return ResourceManager.GetString("readme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Byte[] 类型的本地化资源。
         /// </summary>
         internal static byte[] uniview_dll {

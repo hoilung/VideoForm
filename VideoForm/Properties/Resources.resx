@@ -138,4 +138,18 @@ UV_Channel=1    //通道号
 UV_StreamType=1    //0主码流，1子码流
 UV_LinkMode=1  //连接方式：0-UDP方式，1-TCP方式</value>
   </data>
+  <data name="readme" xml:space="preserve">
+    <value># VideoForm 视频预览
+## 本地视频文件
+VideoForm.exe "file://c:/video.mp4"
+## 海康视频流协议
+VideoForm.exe "hikvision://admin:pwd@192.168.1.64:8000"
+## 宇视视频流协议
+VideoForm.exe "uniview://admin:pwd@192.168.1.64:80"
+## 通用视频协议 (rtmp/rtsp/http)
+VideoForm.exe "rtmp://192.168.1.64/live/stream"
+VideoForm.exe "rtsp://192.168.1.64:554/live/stream"
+VideoForm.exe "http://192.168.1.64:8000/stream.m3u8"
+VideoForm.exe "http://192.168.1.64:8000/mjpg/video.mjpg"</value>
+  </data>
 </root>

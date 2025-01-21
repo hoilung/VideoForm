@@ -33,7 +33,9 @@ namespace VideoForm.Model
             string path = System.IO.Path.GetDirectoryName(System.Windows.Forms.Application.ExecutablePath);
             //生成配置文件
             string confPath = System.IO.Path.Combine(path, "conf.ini");
+            string readmePath = System.IO.Path.Combine(path, "readme.md");
             File.WriteAllText(confPath, VideoForm.Properties.Resources.conf_ini, Encoding.UTF8);
+            File.WriteAllText(readmePath, VideoForm.Properties.Resources.readme, Encoding.UTF8);
         }
         public void Init()
         {
