@@ -115,10 +115,10 @@ namespace VideoForm.Model
                 return new Size(480+16, 360+61);
             int width = int.Parse(sizes[0]);
             int height = int.Parse(sizes[1]);
-            if (width<480)
-                width = 480;
-            if (height < 360)
-                height = 360;
+            if (width<400)
+                width = 400;
+            if (height < 300)
+                height = 300;
             return new Size(width+16, height+61);
         }
         #endregion

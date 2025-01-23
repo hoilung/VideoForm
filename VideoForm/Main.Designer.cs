@@ -72,6 +72,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "Main";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
