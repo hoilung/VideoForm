@@ -33,6 +33,7 @@ namespace VideoForm.Model
         /// </summary>
         rtsp,
         /// <summary>
+        /// http、https
         /// <para>
         /// http://192.168.1.64:8000/live/stream.m3u8
         /// </para>
@@ -91,6 +92,7 @@ namespace VideoForm.Model
                     case "rtsp":
                         set = new VideoSet() { playUrl = str, category = categoryEnum.rtsp };
                         break;
+                    case "https":                        
                     case "http":
                         set = new VideoSet() { playUrl = str, category = categoryEnum.http };
                         break;
